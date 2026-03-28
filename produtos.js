@@ -92,3 +92,39 @@ const listaProdutos = [
     "classificacao": 4
   }
 ]
+
+function criarProduto(produto) {
+    const cardProduto = document.createElement('div')
+    cardProduto.className = 'card-produto'
+
+    const categoria = document.createElement('span')
+    categoria.textContent = produto.categoria
+    categoria.className = 'categoria-produto'
+
+    const foto = document.createElement('img')
+    foto.src = `./img/${produto.imagem}`
+    foto.alt = `Foto de ${produto.nome}`
+
+    const nome = document.createElement('h3')
+    nome.textContent = produto.nome
+    nome.className = 'nome-produto'
+
+    const descricao = document.createElement('span')
+    descricao.textContent = produto.descricao
+    descricao.className = 'descricao-produto'
+
+    const preco = document.createElement('p')
+    preco.textContent = `R$:${produto.preco}`
+    preco.className = 'preco-produto'
+
+    const classificacao = document.createElement('span')
+    classificacao.textContent = `★${produto.classificacao}`
+    classificacao.className = 'classificacao-produto'
+
+    cardProduto.append (categoria, foto, nome, descricao, preco, classificacao)
+    return cardProduto
+}
+
+const cardProdutos = listaProdutos.map(criarProduto)
+
+document.getElementById('lista-de-produtos').append(...cardProdutos)
